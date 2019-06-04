@@ -7,7 +7,9 @@
 Game::Game(sf::Vector2<int> windowSize, std::string windowTitle)
 {
 	sf::RenderWindow window(sf::VideoMode(windowSize.x,windowSize.y), windowTitle);
-	Play(window);
+	Maze maze(sf::Vector2<int>(mazeSize,mazeSize), sf::Vector2<int>(windowSize.x / mazeSize, windowSize.y / mazeSize));
+	Play(window,maze);
+	
 }
 
 
@@ -15,7 +17,7 @@ Game::~Game()
 {
 }
 
-void Game::Play(sf::RenderWindow& window)
+void Game::Play(sf::RenderWindow& window, Maze maze)
 {
 	while (window.isOpen())
 	{
@@ -27,6 +29,7 @@ void Game::Play(sf::RenderWindow& window)
 		}
 
 		window.clear();
+		window.draw(maze); 
 		window.display();
 	}
 }
