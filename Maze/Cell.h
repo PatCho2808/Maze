@@ -15,6 +15,8 @@ public:
 	int GetRow(); 
 	int GetColumn(); 
 	bool IsVisited();
+	void SetVisited(bool newVisited); 
+	void RemoveWalls(Cell &next); 
 
 private: 
 

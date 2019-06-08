@@ -62,6 +62,35 @@ bool Cell::IsVisited()
 	return visited; 
 }
 
+void Cell::SetVisited(bool newVisited)
+{
+	visited = newVisited; 
+}
+
+void Cell::RemoveWalls(Cell & next)
+{
+	int x = column - next.column;
+	int y = row - next.row;
+
+	if (x == 1) {
+		walls[LEFT] = false;
+		next.walls[RIGHT] = false;
+	}
+	else if (x == -1) {
+		walls[RIGHT] = false;
+		next.walls[LEFT] = false;
+	}
+	else if (y == 1) {
+		walls[TOP] = false;
+		next.walls[BOTTOM] = false;
+	}
+	else if (y == -1) {
+		walls[BOTTOM] = false;
+		next.walls[TOP] = false;
+	}
+
+}
+
 void Cell::SetWalls()
 {
 	for (int i = 0; i < 4; i++)

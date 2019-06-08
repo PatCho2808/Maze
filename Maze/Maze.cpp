@@ -8,6 +8,7 @@ Maze::Maze(int mazeSize, int cellSize)
 	this->cellSize = cellSize;
 	CreateCells(); 
 	current = &cells[0]; 
+	GenerateMaze(); 
 }
 
 Maze::~Maze()
@@ -24,7 +25,28 @@ void Maze::draw(sf::RenderTarget & target, sf::RenderStates states) const
 
 void Maze::GenerateMaze()
 {
+	while (true)
+	{
+		current->SetVisited(true); 
+		Cell* next = GetNextCell(); 
 
+		if (next != nullptr)
+		{
+			next->SetVisited(true); 
+			backtrace.push(current); 
+			current->RemoveWalls(*next);
+			current = next;
+		}
+		else if (backtrace.size() > 0)
+		{
+			current = backtrace.top(); 
+			backtrace.pop(); 
+		}
+		else if (backtrace.size() == 0)
+		{
+			break;
+		}
+	}
 }
 
 void Maze::CreateCells()
