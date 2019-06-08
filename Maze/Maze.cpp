@@ -6,10 +6,9 @@ Maze::Maze(int mazeSize, int cellSize)
 {
 	this->mazeSize = mazeSize; 
 	this->cellSize = cellSize;
-
 	CreateCells(); 
+	current = &cells[0]; 
 }
-
 
 Maze::~Maze()
 {
@@ -22,8 +21,6 @@ void Maze::draw(sf::RenderTarget & target, sf::RenderStates states) const
 		target.draw(cell); 
 	}
 }
-
-
 
 void Maze::GenerateMaze()
 {
@@ -40,4 +37,47 @@ void Maze::CreateCells()
 		}
 	}
 
+}
+
+std::vector<Cell *> Maze::GetAvailableNeighbours()
+{
+	std::vector<Cell *> neighbours; 
+
+	int currentRow = current->GetRow(); 
+	int currentColumn = current->GetColumn();
+
+	int neighboursIndexes[4]; 
+
+	neighboursIndexes[0] = CalculateIndex(currentRow - 1, currentColumn); 
+	neighboursIndexes[1] = CalculateIndex(currentRow, currentColumn -1);
+	neighboursIndexes[2] = CalculateIndex(currentRow +1, currentColumn);
+	neighboursIndexes[3] = CalculateIndex(currentRow, currentColumn +1);
+
+	for (int i : neighboursIndexes)
+	{
+		if (i != -1 && cells[i].IsVisited() == false)
+		{
+			neighbours.push_back(&cells[i]); 
+		}
+	}
+
+	return neighbours;
+}
+
+Cell * Maze::GetNextCell()
+{
+	std::vector<Cell *> availableNeighbors = GetAvailableNeighbours();
+	if (availableNeighbors.size() > 0) {
+		return availableNeighbors.at(rand() % availableNeighbors.size());
+	}
+
+	return nullptr;
+}
+
+int Maze::CalculateIndex(int row, int column)
+{
+	if (row < 0 || column < 0 || column > mazeSize - 1 || row > mazeSize - 1)
+		return -1;
+	else
+		return column + row * mazeSize;
 }

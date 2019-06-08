@@ -9,6 +9,7 @@ Cell::Cell(int cellSize, int row, int column)
 	this->row = row; 
 	this->column = column; 
 	SetWalls(); 
+	
 }
 
 
@@ -44,6 +45,21 @@ void Cell::draw(sf::RenderTarget & target, sf::RenderStates states) const
 		line.setRotation(90); 
 		target.draw(line);
 	}
+}
+
+int Cell::GetRow()
+{
+	return row;
+}
+
+int Cell::GetColumn()
+{
+	return column;
+}
+
+bool Cell::IsVisited()
+{
+	return visited; 
 }
 
 void Cell::SetWalls()

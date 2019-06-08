@@ -1,6 +1,8 @@
 #pragma once
 
 #include <SFML/Graphics.hpp>
+#include <stack>
+#include <vector>
 #include "Cell.h"
 
 
@@ -17,10 +19,14 @@ private:
 
 	int mazeSize; 
 	int cellSize;
-
 	std::vector<Cell> cells; 
+	std::stack<Cell *> backtrace;
+	Cell *current; 
 
 	void GenerateMaze();
 	void CreateCells(); 
+	std::vector<Cell *> GetAvailableNeighbours(); 
+	Cell* GetNextCell(); 
+	int CalculateIndex(int row, int column); 
 };
 
