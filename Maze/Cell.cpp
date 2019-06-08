@@ -19,30 +19,30 @@ Cell::~Cell()
 
 void Cell::draw(sf::RenderTarget & target, sf::RenderStates states) const
 {
-	if (walls[0])
+	if (walls[LEFT])
 	{
 		sf::RectangleShape line(sf::Vector2f(cellSize, 0.5));
-		line.setPosition(row* cellSize, column * cellSize);
+		line.setPosition(column* cellSize, row * cellSize);
+		line.setRotation(90);
 		target.draw(line);
 	}
-	if (walls[1])
+	if (walls[TOP])
 	{
 		sf::RectangleShape line(sf::Vector2f(cellSize, 0.5));
-		line.setPosition(row* cellSize, column * cellSize);
-		line.setRotation(90); 
+		line.setPosition(column* cellSize, row * cellSize);
 		target.draw(line);
 	}
-	if (walls[2])
+	if (walls[RIGHT])
 	{
 		sf::RectangleShape line(sf::Vector2f(cellSize, 0.5));
-		line.setPosition(row* cellSize + cellSize, column * cellSize);
+		line.setPosition(column* cellSize + cellSize, row * cellSize);
+		line.setRotation(90);
 		target.draw(line);
 	}
-	if (walls[3])
+	if (walls[BOTTOM])
 	{
 		sf::RectangleShape line(sf::Vector2f(cellSize, 0.5));
-		line.setPosition(row* cellSize, column * cellSize + cellSize);
-		line.setRotation(90); 
+		line.setPosition(column* cellSize, row * cellSize + cellSize);
 		target.draw(line);
 	}
 }
@@ -90,6 +90,7 @@ void Cell::RemoveWalls(Cell & next)
 	}
 
 }
+
 
 void Cell::SetWalls()
 {

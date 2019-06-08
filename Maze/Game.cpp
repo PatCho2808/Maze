@@ -9,6 +9,8 @@ Game::Game(int windowSize, std::string windowTitle)
 	sf::RenderWindow window(sf::VideoMode(windowSize,windowSize), windowTitle);
 	Maze maze(mazeSize, windowSize / mazeSize);
 	Play(window,maze);
+
+	
 	
 }
 

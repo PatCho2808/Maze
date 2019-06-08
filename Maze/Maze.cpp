@@ -1,6 +1,5 @@
 #include "Maze.h"
-
-
+#include<iostream>
 
 Maze::Maze(int mazeSize, int cellSize)
 {
@@ -29,6 +28,8 @@ void Maze::GenerateMaze()
 	{
 		current->SetVisited(true); 
 		Cell* next = GetNextCell(); 
+		
+		
 
 		if (next != nullptr)
 		{
