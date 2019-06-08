@@ -1,6 +1,7 @@
 #pragma once
 
 #include <SFML/Graphics.hpp>
+#include "Cell.h"
 
 
 class Maze :
@@ -17,8 +18,9 @@ private:
 	int mazeSize; 
 	int cellSize;
 
-
+	std::vector<Cell> cells; 
 
 	void GenerateMaze();
+	void CreateCells(); 
 };
 
