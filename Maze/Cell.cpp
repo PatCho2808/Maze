@@ -50,7 +50,7 @@ void Cell::draw(sf::RenderTarget & target, sf::RenderStates states) const
 	{
 		sf::RectangleShape rect(sf::Vector2f(cellSize, cellSize));
 		rect.setPosition(column* cellSize, row * cellSize);
-		rect.setFillColor(sf::Color::Red);
+		rect.setFillColor(sf::Color(244, 101, 65,125));
 		target.draw(rect);
 	}
 }
@@ -107,6 +107,32 @@ void Cell::SetIsBegging()
 void Cell::SetIsEnd()
 {
 	isEnd = true; 
+}
+
+bool Cell::GetCanMoveInDirection(int x, int y)
+{
+	if (x == 1)
+	{
+		if (walls[RIGHT] == true)
+			return false;
+	}
+	if (x == -1)
+	{
+		if (walls[LEFT] == true)
+			return false;
+	}
+	if (y == 1)
+	{
+		if (walls[TOP] == true)
+			return false;
+	}
+	if (y == -1)
+	{
+		if (walls[BOTTOM] == true)
+			return false;
+	}
+
+	return true; 
 }
 
 

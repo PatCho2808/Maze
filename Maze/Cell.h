@@ -20,6 +20,7 @@ public:
 	void RemoveWalls(Cell &next); 
 	void SetIsBegging(); 
 	void SetIsEnd(); 
+	bool GetCanMoveInDirection(int x, int y); 
 
 private: 
 

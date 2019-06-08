@@ -3,6 +3,7 @@
 #include <SFML/Graphics.hpp>
 #include <string>
 #include "Maze.h"
+#include "Player.h"
 
 
 
@@ -17,7 +18,7 @@ public:
 private:  
 
 	int mazeSize = 10; 
-	void Play(sf::RenderWindow& window, Maze maze);
+	void Play(sf::RenderWindow& window, Maze maze, Player player);
 
 };
 

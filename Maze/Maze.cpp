@@ -22,6 +22,18 @@ void Maze::draw(sf::RenderTarget & target, sf::RenderStates states) const
 	}
 }
 
+bool Maze::GetCanMoveInDirection(int row, int column, int x, int y)
+{
+	int cellIndex = CalculateIndex(row, column); 
+	bool canMove = cells[cellIndex].GetCanMoveInDirection(x, y);
+	return canMove;
+}
+
+sf::Vector2i Maze::GetBegging()
+{
+	return sf::Vector2i(beggining->GetRow(), beggining->GetColumn()); 
+}
+
 void Maze::GenerateMaze()
 {
 	while (true)
