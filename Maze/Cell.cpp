@@ -45,6 +45,14 @@ void Cell::draw(sf::RenderTarget & target, sf::RenderStates states) const
 		line.setPosition(column* cellSize, row * cellSize + cellSize);
 		target.draw(line);
 	}
+
+	if (isBegginging || isEnd)
+	{
+		sf::RectangleShape rect(sf::Vector2f(cellSize, cellSize));
+		rect.setPosition(column* cellSize, row * cellSize);
+		rect.setFillColor(sf::Color::Red);
+		target.draw(rect);
+	}
 }
 
 int Cell::GetRow()
@@ -89,6 +97,16 @@ void Cell::RemoveWalls(Cell & next)
 		next.walls[TOP] = false;
 	}
 
+}
+
+void Cell::SetIsBegging()
+{
+	isBegginging = true; 
+}
+
+void Cell::SetIsEnd()
+{
+	isEnd = true; 
 }
 
 

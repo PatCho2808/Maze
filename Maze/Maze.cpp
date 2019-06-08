@@ -6,7 +6,7 @@ Maze::Maze(int mazeSize, int cellSize)
 	this->mazeSize = mazeSize; 
 	this->cellSize = cellSize;
 	CreateCells(); 
-	current = &cells[0]; 
+	SetBeggingAndEnd();
 	GenerateMaze(); 
 }
 
@@ -103,4 +103,13 @@ int Maze::CalculateIndex(int row, int column)
 		return -1;
 	else
 		return column + row * mazeSize;
+}
+
+void Maze::SetBeggingAndEnd()
+{
+	beggining = &cells[rand() % cells.size()];
+	beggining->SetIsBegging(); 
+	end = &cells[rand() % cells.size()];
+	end->SetIsEnd(); 
+	current = beggining; 
 }

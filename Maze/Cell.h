@@ -18,6 +18,8 @@ public:
 	bool IsVisited();
 	void SetVisited(bool newVisited); 
 	void RemoveWalls(Cell &next); 
+	void SetIsBegging(); 
+	void SetIsEnd(); 
 
 private: 
 
@@ -26,6 +28,8 @@ private:
 	bool walls[4]; 
 	bool visited; 
 	enum direction {TOP,RIGHT,BOTTOM,LEFT};
+	bool isBegginging = false; 
+	bool isEnd = false;
 
 	void SetWalls(); 
 

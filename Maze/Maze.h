@@ -22,11 +22,14 @@ private:
 	std::vector<Cell> cells; 
 	std::stack<Cell *> backtrace;
 	Cell *current; 
+	Cell *beggining; 
+	Cell *end; 
 
 	void GenerateMaze();
 	void CreateCells(); 
 	std::vector<Cell *> GetAvailableNeighbours(); 
 	Cell* GetNextCell(); 
 	int CalculateIndex(int row, int column); 
+	void SetBeggingAndEnd(); 
 };
 
