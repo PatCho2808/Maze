@@ -2,12 +2,10 @@
 
 
 
-Maze::Maze(sf::Vector2<int> mazeSize, sf::Vector2<int> cellSize)
+Maze::Maze(int mazeSize, int cellSize)
 {
 	this->mazeSize = mazeSize; 
 	this->cellSize = cellSize;
-
-	
 }
 
 
@@ -18,18 +16,18 @@ Maze::~Maze()
 void Maze::draw(sf::RenderTarget & target, sf::RenderStates states) const
 {
 
-	for (int i = 0; i < mazeSize.x; i++)
+	for (int i = 0; i < mazeSize; i++)
 	{
-		for (int j = 0; j < mazeSize.y; j++)
+		for (int j = 0; j < mazeSize; j++)
 		{
-			sf::RectangleShape line(sf::Vector2f(cellSize.x, 0.5));
-			line.setPosition(cellSize.x*j, cellSize.y*i);
+			sf::RectangleShape line(sf::Vector2f(cellSize, 0.5));
+			line.setPosition(cellSize*j, cellSize*i);
 			line.setRotation(90); 
 			target.draw(line); 
 		}
 
-		sf::RectangleShape line(sf::Vector2f(mazeSize.x * cellSize.x, 0.5));
-		line.setPosition(0, cellSize.y*i);
+		sf::RectangleShape line(sf::Vector2f(mazeSize * cellSize, 0.5));
+		line.setPosition(0, cellSize*i);
 		target.draw(line);
 	}
 }

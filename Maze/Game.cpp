@@ -4,10 +4,10 @@
 
 
 
-Game::Game(sf::Vector2<int> windowSize, std::string windowTitle)
+Game::Game(int windowSize, std::string windowTitle)
 {
-	sf::RenderWindow window(sf::VideoMode(windowSize.x,windowSize.y), windowTitle);
-	Maze maze(sf::Vector2<int>(mazeSize,mazeSize), sf::Vector2<int>(windowSize.x / mazeSize, windowSize.y / mazeSize));
+	sf::RenderWindow window(sf::VideoMode(windowSize,windowSize), windowTitle);
+	Maze maze(mazeSize, windowSize / mazeSize);
 	Play(window,maze);
 	
 }

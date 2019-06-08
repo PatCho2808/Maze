@@ -11,7 +11,7 @@ class Game
 
 
 public:
-	Game(sf::Vector2<int> windowSize, std::string windowTitle);
+	Game(int windowSize, std::string windowTitle);
 	~Game();
 
 private:  

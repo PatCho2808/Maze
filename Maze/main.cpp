@@ -5,7 +5,7 @@
 
 int main()
 {
-	Game game(sf::Vector2<int>(500,500),"Maze"); 
+	Game game(500,"Maze"); 
 
 	return 0;
 }
