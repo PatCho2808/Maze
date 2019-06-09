@@ -7,6 +7,7 @@ Maze::Maze(int mazeSize, int cellSize)
 	this->cellSize = cellSize;
 	CreateCells(); 
 	SetBeggingAndEnd();
+	SetTraps();
 	GenerateMaze(); 
 }
 
@@ -37,6 +38,11 @@ sf::Vector2i Maze::GetBegging()
 sf::Vector2i Maze::GetEnd()
 {
 	return sf::Vector2i(end->GetRow(), end->GetColumn());
+}
+
+bool Maze::GetIsTrap(int row, int column)
+{
+	return cells[CalculateIndex(row, column)].GetIsTrap();
 }
 
 void Maze::GenerateMaze()
@@ -129,4 +135,17 @@ void Maze::SetBeggingAndEnd()
 	end = &cells[rand() % cells.size()];
 	end->SetIsEnd(); 
 	current = beggining; 
+}
+
+void Maze::SetTraps()
+{
+	for (int i = 0; i < numberOfTraps; i++)
+	{
+		int newTrapIndex = rand() % cells.size(); 
+		while (cells[newTrapIndex].GetCanBeTrap() == false)
+		{
+			newTrapIndex = rand() % cells.size();
+		}
+		cells[newTrapIndex].SetIsTrap(); 
+	}
 }

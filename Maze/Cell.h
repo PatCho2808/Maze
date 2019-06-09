@@ -21,6 +21,9 @@ public:
 	void SetIsBegging(); 
 	void SetIsEnd(); 
 	bool GetCanMoveInDirection(int x, int y); 
+	bool GetCanBeTrap(); 
+	void SetIsTrap(); 
+	bool GetIsTrap(); 
 
 private: 
 
@@ -31,6 +34,7 @@ private:
 	enum direction {TOP,RIGHT,BOTTOM,LEFT};
 	bool isBegginging = false; 
 	bool isEnd = false;
+	bool isTrap = false; 
 
 	void SetWalls(); 
 

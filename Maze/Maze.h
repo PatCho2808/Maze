@@ -17,6 +17,7 @@ public:
 	bool GetCanMoveInDirection(int row, int column, int x, int y);
 	sf::Vector2i GetBegging(); 
 	sf::Vector2i GetEnd();
+	bool GetIsTrap(int row, int column); 
 
 private: 
 
@@ -27,6 +28,7 @@ private:
 	Cell *current; 
 	Cell *beggining; 
 	Cell *end; 
+	int numberOfTraps = 3; 
 
 	void GenerateMaze();
 	void CreateCells(); 
@@ -34,5 +36,6 @@ private:
 	Cell* GetNextCell(); 
 	int CalculateIndex(int row, int column); 
 	void SetBeggingAndEnd(); 
+	void SetTraps(); 
 };
 

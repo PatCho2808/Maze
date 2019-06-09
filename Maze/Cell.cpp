@@ -50,7 +50,15 @@ void Cell::draw(sf::RenderTarget & target, sf::RenderStates states) const
 	{
 		sf::RectangleShape rect(sf::Vector2f(cellSize, cellSize));
 		rect.setPosition(column* cellSize, row * cellSize);
-		rect.setFillColor(sf::Color(244, 101, 65,125));
+		rect.setFillColor(sf::Color(65, 244, 77,125));
+		target.draw(rect);
+	}
+
+	if (isTrap)
+	{
+		sf::RectangleShape rect(sf::Vector2f(cellSize, cellSize));
+		rect.setPosition(column* cellSize, row * cellSize);
+		rect.setFillColor(sf::Color(244, 66, 66, 125));
 		target.draw(rect);
 	}
 }
@@ -133,6 +141,21 @@ bool Cell::GetCanMoveInDirection(int x, int y)
 	}
 
 	return true; 
+}
+
+bool Cell::GetCanBeTrap()
+{
+	return isBegginging == false && isEnd == false; 
+}
+
+void Cell::SetIsTrap()
+{
+	isTrap = true; 
+}
+
+bool Cell::GetIsTrap()
+{
+	return isTrap; 
 }
 
 

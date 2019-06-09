@@ -66,7 +66,7 @@ void Game::Play(sf::RenderWindow& window, Maze maze, Player player)
 			}
 		}
 
-		CheckEndGameConditions(player); 
+		CheckEndGameConditions(player, maze); 
 		window.clear();
 		window.draw(maze); 
 		window.draw(player); 
@@ -124,10 +124,15 @@ void Game::SetEndGameText(int windowSize)
 	
 }
 
-void Game::CheckEndGameConditions(Player player)
+void Game::CheckEndGameConditions(Player player, Maze maze)
 {
-	if (player.GetPosition().x == endCoordinates.x &&  player.GetPosition().y == endCoordinates.y)
+	if (player.GetPosition() == endCoordinates)
 	{
 		gameState = WIN; 
+	}
+
+	if (maze.GetIsTrap(player.GetPosition().x, player.GetPosition().y))
+	{
+		gameState = LOSE;
 	}
 }
