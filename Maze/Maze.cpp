@@ -34,6 +34,11 @@ sf::Vector2i Maze::GetBegging()
 	return sf::Vector2i(beggining->GetRow(), beggining->GetColumn()); 
 }
 
+sf::Vector2i Maze::GetEnd()
+{
+	return sf::Vector2i(end->GetRow(), end->GetColumn());
+}
+
 void Maze::GenerateMaze()
 {
 	while (true)

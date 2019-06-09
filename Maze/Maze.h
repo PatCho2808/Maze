@@ -16,6 +16,7 @@ public:
 	virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const;
 	bool GetCanMoveInDirection(int row, int column, int x, int y);
 	sf::Vector2i GetBegging(); 
+	sf::Vector2i GetEnd();
 
 private: 
 

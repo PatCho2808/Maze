@@ -22,9 +22,11 @@ private:
 	state gameState; 
 	sf::Text endGameText;
 	sf::Font font; 
+	sf::Vector2i endCoordinates; 
 	void Play(sf::RenderWindow& window, Maze maze, Player player);
 	void InitGame(int windowSize, sf::RenderWindow& window);
 	void SetEndGameText(int windowSize);
+	void CheckEndGameConditions(Player player);
 
 };
 

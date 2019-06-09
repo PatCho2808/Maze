@@ -66,13 +66,14 @@ void Game::Play(sf::RenderWindow& window, Maze maze, Player player)
 			}
 		}
 
+		CheckEndGameConditions(player); 
 		window.clear();
 		window.draw(maze); 
 		window.draw(player); 
 		window.display();
 	}
 
-	SetEndGameText(window.getSize.x); 
+	SetEndGameText(window.getSize().x); 
 
 	while (gameState == WIN || gameState == LOSE)
 	{
@@ -86,6 +87,7 @@ void Game::InitGame(int windowSize, sf::RenderWindow& window)
 {
 	gameState = PLAY;
 	Maze maze(mazeSize, windowSize / mazeSize);
+	endCoordinates = maze.GetEnd(); 
 	Player player(maze.GetBegging().x, maze.GetBegging().y, windowSize / mazeSize);
 	Play(window, maze, player);
 }
@@ -101,6 +103,14 @@ void Game::SetEndGameText(int windowSize)
 		endGameText.setString("YOU LOSE! \n PRESS ENTER TO RESTART");
 	}
 
-	endGameText.setPosition(windowSize / 2 - endGameText.getScale.x, windowSize / 2 - endGameText.getScale.y);
+	endGameText.setPosition(windowSize / 2 - endGameText.getScale().x, windowSize / 2 - endGameText.getScale().y);
 	endGameText.setFont(font); 
+}
+
+void Game::CheckEndGameConditions(Player player)
+{
+	if (player.GetPosition().x == endCoordinates.x &&  player.GetPosition().y == endCoordinates.y)
+	{
+		gameState = WIN; 
+	}
 }
