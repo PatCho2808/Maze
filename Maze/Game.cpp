@@ -77,6 +77,22 @@ void Game::Play(sf::RenderWindow& window, Maze maze, Player player)
 
 	while (gameState == WIN || gameState == LOSE)
 	{
+
+		sf::Event event;
+		while (window.pollEvent(event))
+		{
+			if (event.type == sf::Event::Closed)
+				window.close();
+
+			if (event.type == sf::Event::KeyPressed)
+			{
+				if (event.key.code == sf::Keyboard::Enter)
+				{
+					InitGame(window.getSize().x, window);
+
+				}
+			}
+		}
 		window.clear();
 		window.draw(endGameText); 
 		window.display();
@@ -103,8 +119,9 @@ void Game::SetEndGameText(int windowSize)
 		endGameText.setString("YOU LOSE! \n PRESS ENTER TO RESTART");
 	}
 
-	endGameText.setPosition(windowSize / 2 - endGameText.getScale().x, windowSize / 2 - endGameText.getScale().y);
-	endGameText.setFont(font); 
+	endGameText.setFont(font);
+	endGameText.setPosition(windowSize / 2 - endGameText.getLocalBounds().width/2, windowSize / 2 - endGameText.getLocalBounds().height/2);
+	
 }
 
 void Game::CheckEndGameConditions(Player player)

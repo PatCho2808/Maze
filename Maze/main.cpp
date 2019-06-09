@@ -8,7 +8,7 @@ int main()
 
 	srand(time(NULL));
 
-	Game game(500,"Maze",5); 
+	Game game(500,"Maze",15); 
 
 	return 0;
 }
