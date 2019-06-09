@@ -11,9 +11,9 @@ public:
 	~Player();
 
 	virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const;
-	void SetPosition();
-	void Move(int x, int y); 
-	sf::Vector2i GetPosition(); 
+	void setPosition();
+	void move(int x, int y); 
+	sf::Vector2i getPosition(); 
 
 private: 
 
@@ -22,7 +22,7 @@ private:
 	sf::RectangleShape rect; 
 	sf::Color color = sf::Color(66, 244, 220, 125);
 
-	void InitRectangle(); 
+	void initRectangle(); 
 	
 };
 

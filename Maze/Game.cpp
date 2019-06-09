@@ -36,61 +36,57 @@ void Game::Play(sf::RenderWindow& window, Maze maze, Player player)
 			{
 				if (event.key.code == sf::Keyboard::Right)
 				{
-					if (maze.GetCanMoveInDirection(player.GetPosition().x, player.GetPosition().y, 1, 0))
+					if (maze.GetCanMoveInDirection(player.getPosition().x, player.getPosition().y, 1, 0))
 					{
-						player.Move(1, 0);
+						player.move(1, 0);
 					}
 						
 				}
 				if (event.key.code == sf::Keyboard::Left)
 				{
-					if (maze.GetCanMoveInDirection(player.GetPosition().x,player.GetPosition().y,-1, 0))
+					if (maze.GetCanMoveInDirection(player.getPosition().x,player.getPosition().y,-1, 0))
 					{
-						player.Move(-1, 0);
+						player.move(-1, 0);
 					}
 				}
 				if (event.key.code == sf::Keyboard::Up)
 				{
-					if (maze.GetCanMoveInDirection(player.GetPosition().x, player.GetPosition().y, 0, 1))
+					if (maze.GetCanMoveInDirection(player.getPosition().x, player.getPosition().y, 0, 1))
 					{
-						player.Move(0,1);
+						player.move(0,1);
 					}
 				}
 				if (event.key.code == sf::Keyboard::Down)
 				{
-					if (maze.GetCanMoveInDirection(player.GetPosition().x, player.GetPosition().y, 0, -1))
+					if (maze.GetCanMoveInDirection(player.getPosition().x, player.getPosition().y, 0, -1))
 					{
-						player.Move(0,-1);
+						player.move(0,-1);
 					}
 				}
 			}
 		}
 
-		CheckEndGameConditions(player, maze); 
+		checkEndGameConditions(player, maze); 
 		window.clear();
 		window.draw(maze); 
 		window.draw(player); 
 		window.display();
 	}
 
-	SetEndGameText(window.getSize().x); 
+	setEndGameText(window.getSize().x); 
 
-	while (gameState == WIN || gameState == LOSE)
-	{
+	while (gameState == WIN || gameState == LOSE){
 
 		sf::Event event;
-		while (window.pollEvent(event))
-		{
+		while (window.pollEvent(event)){
+
 			if (event.type == sf::Event::Closed)
 				window.close();
 
-			if (event.type == sf::Event::KeyPressed)
-			{
-				if (event.key.code == sf::Keyboard::Enter)
-				{
-					InitGame(window.getSize().x, window);
+			if (event.type == sf::Event::KeyPressed){
 
-				}
+				if (event.key.code == sf::Keyboard::Enter)
+					InitGame(window.getSize().x, window);
 			}
 		}
 		window.clear();
@@ -108,14 +104,11 @@ void Game::InitGame(int windowSize, sf::RenderWindow& window)
 	Play(window, maze, player);
 }
 
-void Game::SetEndGameText(int windowSize)
+void Game::setEndGameText(int windowSize)
 {
-	if (gameState == WIN)
-	{
+	if (gameState == WIN){
 		endGameText.setString("YOU WON! \n PRESS ENTER TO RESTART");
-	}
-	else if (gameState == LOSE)
-	{
+	} else if (gameState == LOSE){
 		endGameText.setString("YOU LOSE! \n PRESS ENTER TO RESTART");
 	}
 
@@ -124,15 +117,13 @@ void Game::SetEndGameText(int windowSize)
 	
 }
 
-void Game::CheckEndGameConditions(Player player, Maze maze)
+void Game::checkEndGameConditions(Player player, Maze maze)
 {
-	if (player.GetPosition() == endCoordinates)
-	{
+	if (player.getPosition() == endCoordinates){
 		gameState = WIN; 
 	}
 
-	if (maze.GetIsTrap(player.GetPosition().x, player.GetPosition().y))
-	{
+	if (maze.GetIsTrap(player.getPosition().x, player.getPosition().y)){
 		gameState = LOSE;
 	}
 }

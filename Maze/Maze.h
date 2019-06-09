@@ -36,6 +36,6 @@ private:
 	Cell* GetNextCell(); 
 	int CalculateIndex(int row, int column); 
 	void SetBeggingAndEnd(); 
-	void SetTraps(); 
+	void setTraps(); 
 };
 

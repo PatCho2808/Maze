@@ -143,18 +143,15 @@ bool Cell::GetCanMoveInDirection(int x, int y)
 	return true; 
 }
 
-bool Cell::GetCanBeTrap()
-{
+bool Cell::getCanBeTrap(){
 	return isBegginging == false && isEnd == false; 
 }
 
-void Cell::SetIsTrap()
-{
+void Cell::setIsTrap(){
 	isTrap = true; 
 }
 
-bool Cell::GetIsTrap()
-{
+bool Cell::getIsTrap(){
 	return isTrap; 
 }
 
