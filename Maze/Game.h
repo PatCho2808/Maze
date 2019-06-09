@@ -12,13 +12,19 @@ class Game
 
 
 public:
-	Game(int windowSize, std::string windowTitle);
+	Game(int windowSize, std::string windowTitle, int mazeSize);
 	~Game();
 
 private:  
 
-	int mazeSize = 10; 
+	int mazeSize; 
+	enum state {PLAY,WIN,LOSE};
+	state gameState; 
+	sf::Text endGameText;
+	sf::Font font; 
 	void Play(sf::RenderWindow& window, Maze maze, Player player);
+	void InitGame(int windowSize, sf::RenderWindow& window);
+	void SetEndGameText(int windowSize);
 
 };
 

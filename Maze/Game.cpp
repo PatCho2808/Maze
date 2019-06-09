@@ -5,13 +5,15 @@
 
 
 
-Game::Game(int windowSize, std::string windowTitle)
+Game::Game(int windowSize, std::string windowTitle, int mazeSize)
 {
+	this->mazeSize = mazeSize; 
 	sf::RenderWindow window(sf::VideoMode(windowSize,windowSize), windowTitle);
-	Maze maze(mazeSize, windowSize / mazeSize);
-	Player player(maze.GetBegging().x, maze.GetBegging().y, windowSize / mazeSize);
-	Play(window,maze, player);
-
+	if (!font.loadFromFile("../Materials/Roboto-Black.ttf"))
+	{
+		// error...
+	}
+	InitGame(windowSize, window); 
 }
 
 
@@ -22,7 +24,7 @@ Game::~Game()
 void Game::Play(sf::RenderWindow& window, Maze maze, Player player)
 {
 	
-	while (window.isOpen())
+	while (gameState == PLAY)
 	{
 		sf::Event event;
 		while (window.pollEvent(event))
@@ -69,4 +71,36 @@ void Game::Play(sf::RenderWindow& window, Maze maze, Player player)
 		window.draw(player); 
 		window.display();
 	}
+
+	SetEndGameText(window.getSize.x); 
+
+	while (gameState == WIN || gameState == LOSE)
+	{
+		window.clear();
+		window.draw(endGameText); 
+		window.display();
+	}
+}
+
+void Game::InitGame(int windowSize, sf::RenderWindow& window)
+{
+	gameState = PLAY;
+	Maze maze(mazeSize, windowSize / mazeSize);
+	Player player(maze.GetBegging().x, maze.GetBegging().y, windowSize / mazeSize);
+	Play(window, maze, player);
+}
+
+void Game::SetEndGameText(int windowSize)
+{
+	if (gameState == WIN)
+	{
+		endGameText.setString("YOU WON! \n PRESS ENTER TO RESTART");
+	}
+	else if (gameState == LOSE)
+	{
+		endGameText.setString("YOU LOSE! \n PRESS ENTER TO RESTART");
+	}
+
+	endGameText.setPosition(windowSize / 2 - endGameText.getScale.x, windowSize / 2 - endGameText.getScale.y);
+	endGameText.setFont(font); 
 }
