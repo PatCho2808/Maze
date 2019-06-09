@@ -1,1 +1,1 @@
-![](Maze_final .gif)
+![](Maze_final.gif)
