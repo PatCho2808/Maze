@@ -25,8 +25,8 @@ private:
 	sf::Vector2i endCoordinates; 
 	void Play(sf::RenderWindow& window, Maze maze, Player player);
 	void InitGame(int windowSize, sf::RenderWindow& window);
-	void setEndGameText(int windowSize);
-	void checkEndGameConditions(Player player, Maze maze);
+	void SetEndGameText(int windowSize);
+	void CheckEndGameConditions(Player player, Maze maze);
 
 };
 

@@ -2,11 +2,12 @@
 
 
 
-Player::Player(int row, int column, int size){
+Player::Player(int row, int column, int size)
+{
 	this->row = row; 
 	this->column = column; 
 	this->size = size; 
-	initRectangle(); 
+	InitRectangle(); 
 
 }
 
@@ -14,26 +15,30 @@ Player::~Player()
 {
 }
 
-void Player::draw(sf::RenderTarget & target, sf::RenderStates states) const{
+void Player::draw(sf::RenderTarget & target, sf::RenderStates states) const
+{
 	target.draw(rect); 
 }
 
-void Player::setPosition(){
+void Player::SetPosition(){
 	rect.setPosition(size*column, size*row);
 }
 
-void Player::move(int x, int y){
+void Player::Move(int x, int y)
+{
 	column = column + x; 
 	row = row - y; 
-	setPosition(); 
+	SetPosition(); 
 }
 
-sf::Vector2i Player::getPosition(){
+sf::Vector2i Player::GetPosition()
+{
 	return sf::Vector2i(row,column);
 }
 
-void Player::initRectangle(){
+void Player::InitRectangle()
+{
 	rect.setSize(sf::Vector2f(size, size));
-	setPosition(); 
+	SetPosition(); 
 	rect.setFillColor(color); 
 }

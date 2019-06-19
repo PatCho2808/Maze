@@ -21,9 +21,9 @@ public:
 	void SetIsBegging(); 
 	void SetIsEnd(); 
 	bool GetCanMoveInDirection(int x, int y); 
-	bool getCanBeTrap(); 
-	void setIsTrap(); 
-	bool getIsTrap(); 
+	bool GetCanBeTrap(); 
+	void SetIsTrap(); 
+	bool GetIsTrap(); 
 
 private: 
 

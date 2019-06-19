@@ -36,44 +36,44 @@ void Game::Play(sf::RenderWindow& window, Maze maze, Player player)
 			{
 				if (event.key.code == sf::Keyboard::Right)
 				{
-					if (maze.GetCanMoveInDirection(player.getPosition().x, player.getPosition().y, 1, 0))
+					if (maze.GetCanMoveInDirection(player.GetPosition().x, player.GetPosition().y, 1, 0))
 					{
-						player.move(1, 0);
+						player.Move(1, 0);
 					}
 						
 				}
 				if (event.key.code == sf::Keyboard::Left)
 				{
-					if (maze.GetCanMoveInDirection(player.getPosition().x,player.getPosition().y,-1, 0))
+					if (maze.GetCanMoveInDirection(player.GetPosition().x,player.GetPosition().y,-1, 0))
 					{
-						player.move(-1, 0);
+						player.Move(-1, 0);
 					}
 				}
 				if (event.key.code == sf::Keyboard::Up)
 				{
-					if (maze.GetCanMoveInDirection(player.getPosition().x, player.getPosition().y, 0, 1))
+					if (maze.GetCanMoveInDirection(player.GetPosition().x, player.GetPosition().y, 0, 1))
 					{
-						player.move(0,1);
+						player.Move(0,1);
 					}
 				}
 				if (event.key.code == sf::Keyboard::Down)
 				{
-					if (maze.GetCanMoveInDirection(player.getPosition().x, player.getPosition().y, 0, -1))
+					if (maze.GetCanMoveInDirection(player.GetPosition().x, player.GetPosition().y, 0, -1))
 					{
-						player.move(0,-1);
+						player.Move(0,-1);
 					}
 				}
 			}
 		}
 
-		checkEndGameConditions(player, maze); 
+		CheckEndGameConditions(player, maze); 
 		window.clear();
 		window.draw(maze); 
 		window.draw(player); 
 		window.display();
 	}
 
-	setEndGameText(window.getSize().x); 
+	SetEndGameText(window.getSize().x); 
 
 	while (gameState == WIN || gameState == LOSE){
 
@@ -104,7 +104,7 @@ void Game::InitGame(int windowSize, sf::RenderWindow& window)
 	Play(window, maze, player);
 }
 
-void Game::setEndGameText(int windowSize)
+void Game::SetEndGameText(int windowSize)
 {
 	if (gameState == WIN){
 		endGameText.setString("YOU WON! \n PRESS ENTER TO RESTART");
@@ -117,13 +117,13 @@ void Game::setEndGameText(int windowSize)
 	
 }
 
-void Game::checkEndGameConditions(Player player, Maze maze)
+void Game::CheckEndGameConditions(Player player, Maze maze)
 {
-	if (player.getPosition() == endCoordinates){
+	if (player.GetPosition() == endCoordinates){
 		gameState = WIN; 
 	}
 
-	if (maze.GetIsTrap(player.getPosition().x, player.getPosition().y)){
+	if (maze.GetIsTrap(player.GetPosition().x, player.GetPosition().y)){
 		gameState = LOSE;
 	}
 }
