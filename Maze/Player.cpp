@@ -20,7 +20,8 @@ void Player::draw(sf::RenderTarget & target, sf::RenderStates states) const
 	target.draw(rect); 
 }
 
-void Player::SetPosition(){
+void Player::SetPosition()
+{
 	rect.setPosition(size*column, size*row);
 }
 

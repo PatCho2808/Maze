@@ -11,7 +11,7 @@ Game::Game(int windowSize, std::string windowTitle, int mazeSize)
 	sf::RenderWindow window(sf::VideoMode(windowSize,windowSize), windowTitle);
 	if (!font.loadFromFile("../Materials/Roboto-Black.ttf"))
 	{
-		// error...
+		std::cout << "No font file found " << std::endl;; 
 	}
 	InitGame(windowSize, window); 
 }

@@ -158,7 +158,6 @@ bool Cell::GetIsTrap()
 	return isTrap; 
 }
 
-
 void Cell::SetWalls()
 {
 	for (int i = 0; i < 4; i++)
